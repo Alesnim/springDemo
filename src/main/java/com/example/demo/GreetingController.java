@@ -47,7 +47,7 @@ public class GreetingController extends HttpServlet {
     @CrossOrigin
     @RequestMapping("/todo")
     public @ResponseBody List<Action> todos(){
-        actionsRepository.save(new Action("помыть посуду", "помыть посуду на кухне"));
+
         List<Action> actions = new ArrayList<>();
 
         actionsRepository.findAll().forEach(actions::add);
