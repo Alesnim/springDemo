@@ -64,4 +64,17 @@ public class GreetingController extends HttpServlet {
         actionsRepository.save(action);
         return "result";
     }
+
+
+    @CrossOrigin
+    @PutMapping(value = "/todo/update/{id}", consumes = "application/x-www-form-urlencoded")
+    public ResponseEntity<Action> todoUpdate (@PathVariable(value = "id") long id,
+                                              @RequestParam String name,
+                                              @RequestParam String text){
+        Action action = actionsRepository.findActionById(id);
+        action.setName(name);
+        action.setText(text);
+        actionsRepository.save(action);
+        return new ResponseEntity<Action>(actionsRepository.findActionById(id), HttpStatus.OK);
+    }
 }
