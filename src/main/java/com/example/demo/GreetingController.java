@@ -77,4 +77,12 @@ public class GreetingController extends HttpServlet {
         actionsRepository.save(action);
         return new ResponseEntity<Action>(actionsRepository.findActionById(id), HttpStatus.OK);
     }
+
+
+    @CrossOrigin
+    @DeleteMapping(value = "/todo/delete/{id}", consumes = "application/x-www-form-urlencoded")
+    public ResponseEntity<Void> todoDelete (@PathVariable(value = "id") long id) {
+        actionsRepository.delete(actionsRepository.findActionById(id));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
