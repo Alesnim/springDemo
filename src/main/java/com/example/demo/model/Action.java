@@ -30,6 +30,11 @@ public class Action {
     }
 
 
+    public long getId() {
+        return id;
+    }
+
+
     public String getName() {
         return name;
     }
